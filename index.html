@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arunava Phadikar | Data Scientist & AI Enthusiast</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #fff;
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255,255,255,0.05) 10px,
+        rgba(255,255,255,0.05) 20px
+      );
+      animation: shimmer 20s linear infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(360deg); }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-size: 3.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    .hero .subtitle {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    
+    .welcome-message {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Navigation */
+    .nav-pills {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+    }
+    
+    .nav-pill {
+      padding: 12px 24px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .nav-pill:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+    
+    /* Section Styling */
+    section {
+      padding: 50px 40px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: all 0.3s ease;
+    }
+    
+    section:hover {
+      background: rgba(255,255,255,0.5);
+    }
+    
+    section:last-child {
+      border-bottom: none;
+    }
+    
+    h2 {
+      color: #1e3c72;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      border-radius: 2px;
+    }
+    
+    .intro-text {
+      text-align: center;
+      font-size: 1.2em;
+      color: #666;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+    
+    /* About Section */
+    .about-content {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      padding: 40px;
+      border-radius: 20px;
+      margin: 20px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+    
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .skill-category {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 30px;
+      border-radius: 20px;
+      color: white;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .skill-category h4 {
+      margin: 0 0 15px 0;
+      font-size: 1.4em;
+      color: #fff;
+    }
+    
+    .skill-category p {
+      font-size: 0.95em;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .project-card {
+      background: linear-gradient(135deg, #f8f9ff 0%, #e8f0fe 100%);
+      padding: 35px;
+      border-radius: 20px;
+      border-left: 6px solid #2a5298;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .project-card:hover::before {
+      opacity: 1;
+    }
+    
+    .project-title {
+      color: #1e3c72;
+      font-size: 1.4em;
+      font-weight: bold;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .project-meta {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .project-description {
+      line-height: 1.7;
+      color: #555;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .coming-soon {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.9em;
+      font-weight: bold;
+      display: inline-block;
+      margin: 15px 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Experience & Education */
+    .timeline-item {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      padding: 30px;
+      border-radius: 20px;
+      margin: 25px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+      transform: translateX(10px);
+    }
+    
+    .timeline-item h3 {
+      color: #1e3c72;
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+    
+    .timeline-item .meta {
+      color: #666;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+    
+    /* Achievements */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .achievement-card {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      color: #333;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .achievement-card:hover {
+      transform: translateY(-5px) scale(1.05);
+    }
+    
+    .achievement-card h4 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+    
+    /* Hobbies */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .hobby-card {
+      background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+      padding: 35px;
+      border-radius: 20px;
+      text-align: center;
+      color: #333;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .hobby-card:hover {
+      transform: translateY(-8px) rotate(2deg);
+    }
+    
+    .hobby-card h4 {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 60px 40px;
+    }
+    
+    .contact-section h2 {
+      color: white;
+      margin-bottom: 30px;
+    }
+    
+    .contact-section h2::after {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    }
+    
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    
+    .contact-link {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    
+    .contact-link:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    /* Footer */
+    .footer {
+      background: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      font-size: 1.1em;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5em;
+      }
+      
+      .hero .subtitle {
+        font-size: 1.1em;
+      }
+      
+      .nav-pills {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      
+      section {
+        padding: 30px 20px;
+      }
+      
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* List styling */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+      padding-left: 25px;
+    }
+    
+    li:last-child {
+      border-bottom: none;
+    }
+    
+    li::before {
+      content: "✦";
+      color: #ff9a9e;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Hello, I'm Arunava Phadikar! 👋</h1>
+        <p class="subtitle">Data Scientist | AI Enthusiast | Problem Solver</p>
+        <div class="welcome-message">
+          <p>Welcome to my digital space! I'm passionate about transforming data into meaningful insights and building intelligent systems that make a difference. Whether you're here to explore my projects, learn about my journey, or discuss potential collaborations, I'm excited to share my world of data science and AI with you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <p>I'm an enthusiastic Data Science professional with a strong foundation in Machine Learning, Deep Learning, and AI. Currently pursuing my M.Tech at the prestigious Indian Statistical Institute, Kolkata, I thrive on solving complex problems through data-driven approaches.</p>
+        <br>
+        <p>My journey began with Mechanical Engineering, but my curiosity led me to the fascinating world of data science. I believe that every dataset tells a story, and I'm here to help uncover those stories and turn them into actionable insights that can change the world, one algorithm at a time.</p>
+      </div>
+    </section>
+
+    <!-- Technical Expertise -->
+    <section id="skills">
+      <h2>My Technical Arsenal</h2>
+      <p class="intro-text">Here's a glimpse of the tools and technologies I work with to bring ideas to life</p>
+      
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4>🐍 Programming Languages</h4>
+          <p>Python (Advanced), SQL (Intermediate), R (Basic), JavaScript (Basic)</p>
+        </div>
+        <div class="skill-category">
+          <h4>🤖 ML/DL Frameworks</h4>
+          <p>NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch, Keras, JAX, MLX</p>
+        </div>
+        <div class="skill-category">
+          <h4>🧠 Deep Learning</h4>
+          <p>Transformers, Diffusers, Accelerate, PEFT, BitsAndBytes, AutoGPTQ, GGUF</p>
+        </div>
+        <div class="skill-category">
+          <h4>📝 NLP & Text Processing</h4>
+          <p>NLTK, SpaCy, Gensim, SentencePiece, Tokenizers, Datasets</p>
+        </div>
+        <div class="skill-category">
+          <h4>👁️ Computer Vision</h4>
+          <p>OpenCV, PIL/Pillow, Albumentations, Tesseract OCR, MediaPipe</p>
+        </div>
+        <div class="skill-category">
+          <h4>📊 Data Visualization</h4>
+          <p>Matplotlib, Seaborn, Plotly, Bokeh, Streamlit, Gradio</p>
+        </div>
+        <div class="skill-category">
+          <h4>📈 Statistical Analysis</h4>
+          <p>Statsmodels, SciPy, PCA, t-SNE, UMAP, Factor Analysis</p>
+        </div>
+        <div class="skill-category">
+          <h4>🌳 Ensemble Methods</h4>
+          <p>XGBoost, LightGBM, CatBoost, Random Forest, AdaBoost</p>
+        </div>
+        <div class="skill-category">
+          <h4>🛠️ Tools & Platforms</h4>
+          <p>Jupyter, Google Colab, VS Code, Git, Weights & Biases, MLflow</p>
+        </div>
+        <div class="skill-category">
+          <h4>⚡ Parameter-Efficient Fine-tuning</h4>
+          <p>LoRA, AdaLoRA, Bayesian LoRA, QLoRA, Prefix-Tuning, P-Tuning v2</p>
+        </div>
+      </div>
+      
+      <div style="margin-top: 40px;">
+        <h3 style="color: #1e3c72; text-align: center; margin-bottom: 20px;">🤖 Large Language Models I Work With</h3>
+        <p style="text-align: center; background: linear-gradient(135deg, #f8f9ff 0%, #e8f0fe 100%); padding: 20px; border-radius: 15px; line-height: 1.8;">
+          BERT, RoBERTa, GPT-2/3/4, T5, DistilBERT, Falcon, LLaMA/LLaMA-2, Mistral, BART, DeepSeek, TinyLlama, Phi-1.5/2/3, Gemma, Qwen, ChatGLM, BanglaBERT, IndicBERT, XLM-RoBERTa
+        </p>
+      </div>
+      
+      <div style="margin-top: 30px;">
+        <h3 style="color: #1e3c72; text-align: center; margin-bottom: 20px;">👁️‍🗨️ Vision-Language Models</h3>
+        <p style="text-align: center; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); padding: 20px; border-radius: 15px; line-height: 1.8;">
+          CLIP, ViLT, LXMERT, BLIP, BLIP-2, LLaVA, MiniGPT-4, InstructBLIP, Flamingo
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects That Excite Me</h2>
+      <p class="intro-text">Each project represents a unique challenge I've tackled, combining creativity with technical expertise</p>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-title">🌟 Multimodal Bengali Hate Speech Detection: A Bayesian LoRA Approach</div>
+          <div class="project-meta">M.Tech Final Year Project | Jan 2025 – June 2025</div>
+          <div class="project-meta">Supervised by Prof. Tanmay Sen, SQC & OR Unit, Indian Statistical Institute, Kolkata</div>
+          <div class="project-description">
+            Developing a cutting-edge multimodal hate speech detection system for Bengali language using Bayesian LoRA approach with vision-language transformers. This project aims to create a more inclusive and safer digital space for Bengali-speaking communities.
+          </div>
+          <div class="coming-soon">🚀 Coming Soon</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-title">💬 YouTube Comments Sentiment Analysis Using Parameter-Efficient Fine-tuning</div>
+          <div class="project-meta">February 2025</div>
+          <div class="project-description">
+            Built an advanced sentiment analysis system leveraging parameter-efficient fine-tuning to classify YouTube comments with minimal computational resources while maintaining high performance. Achieved 72% accuracy using AdaLoRA fine-tuning on TinyLlama-1.1B model, making AI more accessible and efficient.
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-title">🏥 Advanced Skin Cancer Classification Using Deep Neural Networks</div>
+          <div class="project-meta">December 2024</div>
+          <div class="project-description">
+            Created a comprehensive medical AI application comparing traditional ML versus deep learning approaches for melanoma detection. Implemented custom CNN architecture and ResNet-50 transfer learning, achieving 94% accuracy on dermatoscopic image classification - potentially saving lives through early detection.
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-title">👥 HR Employee Attrition Prediction with Advanced Feature Engineering</div>
+          <div class="project-meta">August 2024</div>
+          <div class="project-description">
+            Developed a business-critical ML solution for predicting employee turnover using advanced feature engineering and ensemble methods. Random Forest Classifier achieved 93% accuracy, enabling proactive HR interventions and significant cost savings for organizations.
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-title">🚭 Health-Based Smoking Prediction Using Vital Signs Analysis</div>
+          <div class="project-meta">July 2024</div>
+          <div class="project-description">
+            Built a healthcare analytics project predicting smoking behavior from physiological indicators. Logistic Regression model achieved 82% accuracy on 55,692 health records, demonstrating reliable prediction capability for preventive medicine applications.
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-title">🧠 Brain Tumor Classification with Multi-Algorithm Comparison</div>
+          <div class="project-meta">April 2024</div>
+          <div class="project-description">
+            Developed a medical AI application for automated brain tumor detection comparing multiple ML approaches. Support Vector Machine achieved optimal performance with 95.2% accuracy and 0.98 AUC-ROC score for radiological diagnosis support.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Experience -->
+    <section id="journey">
+      <h2>My Learning Journey</h2>
+      <p class="intro-text">The path that brought me to where I am today</p>
+      
+      <div class="timeline-item">
+        <h3>🎓 Indian Statistical Institute, Kolkata</h3>
+        <div class="meta">Master of Technology in Quality, Reliability and Operation Research | July 2023 - July 2025</div>
+        <p>Diving deep into advanced statistical methods, machine learning, and operations research. This prestigious program has equipped me with both theoretical foundations and practical skills in data science and AI.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>🔧 Indian Institute of Engineering Science and Technology, Shibpur</h3>
+        <div class="meta">Bachelor of Technology in Mechanical Engineering | Aug 2019 – May 2023</div>
+        <p>My engineering background gave me strong analytical thinking and problem-solving skills that I now apply to data science challenges. The transition from mechanical systems to data systems has been an exciting journey!</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>💼 Data Science Intern | IIT Kanpur</h3>
+        <div class="meta">June 2024 – August 2024</div>
+        <p>An incredible opportunity to work with leading researchers and apply my skills to real-world problems. I gained hands-on experience with ML algorithms, data preprocessing, and model optimization while collaborating with brilliant minds in the field.</p>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+      <h2>Milestones & Achievements</h2>
+      <p class="intro-text">Some accomplishments I'm proud of along the way</p>
+      
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <h4>🏆 JEE Mains</h4>
+          <p>99.91 Percentile</p>
+        </div>
+        <div class="achievement-card">
+          <h4>🎯 JEE Advanced</h4>
+          <p>AIR 3764</p>
+        </div>
+        <div class="achievement-card">
+          <h4>⭐ WBJEE</h4>
+          <p>99.97 Percentile</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hobbies -->
+    <section id="hobbies">
+      <h2>Beyond the Code</h2>
+      <p class="intro-text">When I'm not analyzing data or training models, you'll find me...</p>
+      
+      <div class="hobbies-grid">
+        <div class="hobby-card">
+          <h4>🌍 Exploring the World</h4>
+          <p>Traveling to offbeat destinations and discovering new cultures. Every journey teaches me something new and gives me fresh perspectives!</p>
+        </div>
+        <div class="hobby-card">
+          <h4>🏏 Sports & Gaming</h4>
+          <p>Playing Cricket, Carrom, and e-games. I've participated in various college tournaments and love the strategic thinking these games require.</p>
+        </div>
+        <div class="hobby-card">
+          <h4>🎬 Stories & Music</h4>
+          <p>Watching movies, listening to music, and reading books across different genres. I believe great stories inspire great ideas!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact">
+      <h2>Let's Connect & Create Something Amazing!</h2>
+      <p style="font-size: 1.2em; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Whether you want to collaborate on a project, discuss data science, or just say hello, I'd love to hear from you. Let's turn ideas into reality together!
+      </p>
+      
+      <div class="contact-links">
+        <a href="mailto:arunavaphadikar@gmail.com" class="contact-link">📧 Email Me</a>
+        <a href="https://www.linkedin.com/in/arunava-phadikar-9ab1001a5" target="_blank" class="contact-link">💼 LinkedIn</a>
+        <a href="https://www.kaggle.com/arunavaphadikar" target="_blank" class="contact-link">🏆 Kaggle</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>✨ Thank you for taking the time to explore my portfolio! ✨</p>
+      <p>Made with ❤️ and lots of ☕ by Arunava Phadikar</p>
+    </div>
+  </div>
+</body>
+</html>
